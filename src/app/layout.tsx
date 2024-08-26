@@ -1,21 +1,24 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type {Metadata} from 'next';
+import {Inter} from 'next/font/google';
+import './globals.css';
+import {App} from '@/components/App';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({subsets: ['latin']});
 
 export const metadata: Metadata = {
-  title: "Todo List",
+    title: 'Todo List',
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  );
+    return (
+        <html lang="pt-Br">
+            <body className={inter.className}>
+                <App>{children}</App>
+            </body>
+        </html>
+    );
 }

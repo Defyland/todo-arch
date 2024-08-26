@@ -1,3 +1,6 @@
+import {Header} from '@/components/Header';
+import {Screen} from '@/components/Screen';
+
 export default function Home() {
-  return <span>Todo list</span>;
+    return <Screen></Screen>;
 }
