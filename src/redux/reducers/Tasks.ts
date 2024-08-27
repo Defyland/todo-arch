@@ -17,11 +17,17 @@ const Tasks = createSlice({
     initialState,
     reducers: {
         createTask: (state, {payload}: GenericPayload<ITask>) => {
-            return {...state, tasks: {...state.tasks, ...payload}};
+            return {...state, tasks: [...state.tasks, payload]};
+        },
+        removeTask: (state, {payload}: GenericPayload<ITask>) => {
+            return {...state, tasks: [...state.tasks, payload]};
+        },
+        updateTask: (state, {payload}: GenericPayload<ITask>) => {
+            return {...state, tasks: [...state.tasks, payload]};
         },
     },
 });
 
-export const {createTask} = Tasks.actions;
+export const {createTask, removeTask, updateTask} = Tasks.actions;
 
 export default Tasks.reducer;

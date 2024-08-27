@@ -1,5 +1,5 @@
-import {Container} from './Compositons/Container';
-import {Content} from './Compositons/Content';
+import {Container} from './Compositions/Container';
+import {Content} from './Compositions/Content';
 
 export const GlobalWrapper = {
     Container,
