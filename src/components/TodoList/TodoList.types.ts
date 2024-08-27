@@ -1,19 +1,19 @@
 import {withChildren, ITask, FilterOption} from '@/utils';
 
 export namespace ITodoList {
-    export interface IView extends withChildren {}
-    export interface IModelProps {}
-    export interface IModel {}
+    export type IView = withChildren;
+    export type IModelProps = {};
+    export type IModel = {};
 }
 
 export namespace ITodoListItem {
-    export interface IView {
+    export type IView = {
         task: ITask;
         selectedTask: () => void;
         deleteTask: () => void;
-    }
-    export interface IModelProps {}
-    export interface IModel {
+    };
+    export type IModelProps = {};
+    export type IModel = {
         saveTask: (event: React.ChangeEvent<HTMLFormElement>) => void;
         input: string;
         setInput: React.Dispatch<React.SetStateAction<string>>;
@@ -21,5 +21,5 @@ export namespace ITodoListItem {
         options: FilterOption[];
         changeFilter: (filter: FilterOption) => void;
         selectedFilter: FilterOption;
-    }
+    };
 }

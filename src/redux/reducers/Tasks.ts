@@ -1,12 +1,7 @@
-import {GenericPayload, ITask} from '@/utils';
+import {ITasksState, StringPayload, TaskPayload} from '@/utils';
 import {createSlice} from '@reduxjs/toolkit';
 
-interface ITasks {
-    tasks: ITask[];
-    currentTask: ITask | null;
-}
-
-const initialState: ITasks = {
+const initialState: ITasksState = {
     tasks: [],
     currentTask: null,
 };
@@ -15,15 +10,15 @@ const Tasks = createSlice({
     name: 'Tasks',
     initialState,
     reducers: {
-        createTask: (state, {payload}: GenericPayload<ITask>) => {
+        createTask: (state, {payload}: TaskPayload) => {
             state.tasks = [payload, ...state.tasks];
         },
-        removeTask: (state, {payload}: GenericPayload<string>) => {
+        removeTask: (state, {payload}: StringPayload) => {
             state.tasks = state.tasks.filter(
                 (_, index) => String(index) !== payload
             );
         },
-        checkTask: (state, {payload}: GenericPayload<string>) => {
+        checkTask: (state, {payload}: StringPayload) => {
             state.tasks = state.tasks.map((task, id) => {
                 if (String(id) === payload) {
                     task.completed = !task.completed;

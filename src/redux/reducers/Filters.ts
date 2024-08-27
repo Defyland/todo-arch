@@ -1,12 +1,12 @@
-import {GenericPayload, IFilterOption, FilterOption} from '@/utils/globals';
+import {
+    GenericPayload,
+    IFilterOption,
+    FilterOption,
+    IFilterState,
+} from '@/utils';
 import {createSlice} from '@reduxjs/toolkit';
 
-type IFilter = {
-    filter: IFilterOption;
-    options: IFilterOption[];
-};
-
-const initialState: IFilter = {
+const initialState: IFilterState = {
     filter: FilterOption.All,
     options: [
         FilterOption.All,
