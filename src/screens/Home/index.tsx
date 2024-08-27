@@ -14,7 +14,7 @@ export const HomeScreen = () => {
             <List.TodoList>
                 {tasks.map((task, index) => (
                     <List.TodoListItem
-                        key={`${task.title}${index}`}
+                        key={`${task.title}-${index}`}
                         task={task}
                         selectedTask={() => selectedTask(String(index))}
                         deleteTask={() => deleteTask(String(index))}

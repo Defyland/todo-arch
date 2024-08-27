@@ -1,8 +1,4 @@
-import {
-    GenericPayload,
-    IFilterOption,
-    FilterOption,
-} from '@/utils/globals/index';
+import {GenericPayload, IFilterOption, FilterOption} from '@/utils/globals';
 import {createSlice} from '@reduxjs/toolkit';
 
 type IFilter = {

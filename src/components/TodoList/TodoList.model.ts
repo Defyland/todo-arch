@@ -2,8 +2,9 @@ import {useState, ChangeEvent} from 'react';
 import {FilterOption, useAppDispatch, useAppSelector} from '@/utils';
 import {createTask} from '@/redux/reducers/Tasks';
 import {updateFilter} from '@/redux/reducers/Filters';
+import {ITodoListItem} from './TodoList.types';
 
-export const useTodoList = () => {
+export const useTodoList = (): ITodoListItem.IModel => {
     const dispatch = useAppDispatch();
     const [input, setInput] = useState('');
 

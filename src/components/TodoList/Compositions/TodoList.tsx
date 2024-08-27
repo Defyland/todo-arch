@@ -1,5 +1,5 @@
-import {ITodoList} from '@/components/TodoList/TodoList.types';
-import {Styles} from '@/components/TodoList/TodoList.styles';
+import {ITodoList} from '../TodoList.types';
+import {Styles} from '../TodoList.styles';
 
 export const TodoList = ({children}: ITodoList.IView) => (
     <div data-testid={`TodoList`} className={Styles.TodoListContainer}>

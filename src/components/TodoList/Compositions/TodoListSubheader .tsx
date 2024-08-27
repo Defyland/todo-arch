@@ -1,5 +1,5 @@
-import {Styles} from '@/components/TodoList/TodoList.styles';
-import {useTodoList} from '@/components/TodoList/TodoList.model';
+import {Styles} from '../TodoList.styles';
+import {useTodoList} from '../TodoList.model';
 import {translateFilters} from '@/utils';
 
 export const TodoListSubheader = () => {

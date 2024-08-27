@@ -1,7 +1,8 @@
 import {useAppDispatch, useAppSelector, FilterOption, ITask} from '@/utils';
 import {removeTask, checkTask} from '@/redux/reducers/Tasks';
+import {IHome} from './Home.types';
 
-export const useHomeScreen = () => {
+export const useHomeScreen = (): IHome.IModel => {
     const dispatch = useAppDispatch();
 
     const {

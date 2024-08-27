@@ -1,5 +1,4 @@
-import {GenericPayload} from '@/utils/globals/index';
-import {ITask} from '@/utils/entities/Task';
+import {GenericPayload, ITask} from '@/utils';
 import {createSlice} from '@reduxjs/toolkit';
 
 interface ITasks {

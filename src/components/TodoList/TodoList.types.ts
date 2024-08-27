@@ -1,4 +1,4 @@
-import {withChildren, ITask} from '@/utils';
+import {withChildren, ITask, FilterOption} from '@/utils';
 
 export namespace ITodoList {
     export interface IView extends withChildren {}
@@ -13,5 +13,13 @@ export namespace ITodoListItem {
         deleteTask: () => void;
     }
     export interface IModelProps {}
-    export interface IModel {}
+    export interface IModel {
+        saveTask: (event: React.ChangeEvent<HTMLFormElement>) => void;
+        input: string;
+        setInput: React.Dispatch<React.SetStateAction<string>>;
+        handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+        options: FilterOption[];
+        changeFilter: (filter: FilterOption) => void;
+        selectedFilter: FilterOption;
+    }
 }
