@@ -8,8 +8,6 @@ import {List} from '@/components/TodoList';
 export const HomeScreen = (props: IHome.IView) => {
     const {tasks, deleteTask, selectedTask} = useHomeScreen();
 
-    console.log({tasks});
-
     return (
         <Screen>
             <List.TodoListHeader />

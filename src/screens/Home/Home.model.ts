@@ -1,5 +1,5 @@
 import {useAppDispatch, useAppSelector} from '@/utils';
-import {createTask, removeTask, checkTask} from '@/redux/reducers/Tasks';
+import {removeTask, checkTask} from '@/redux/reducers/Tasks';
 
 export const useHomeScreen = () => {
     const dispatch = useAppDispatch();
