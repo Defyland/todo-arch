@@ -9,6 +9,8 @@ export namespace ITodoList {
 export namespace ITodoListItem {
     export interface IView {
         task: ITask;
+        selectedTask: () => void;
+        deleteTask: () => void;
     }
     export interface IModelProps {}
     export interface IModel {}

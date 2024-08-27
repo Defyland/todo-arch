@@ -17,17 +17,24 @@ const Tasks = createSlice({
     initialState,
     reducers: {
         createTask: (state, {payload}: GenericPayload<ITask>) => {
-            return {...state, tasks: [...state.tasks, payload]};
+            state.tasks = [payload, ...state.tasks];
         },
-        removeTask: (state, {payload}: GenericPayload<ITask>) => {
-            return {...state, tasks: [...state.tasks, payload]};
+        removeTask: (state, {payload}: GenericPayload<string>) => {
+            state.tasks = state.tasks.filter(
+                (_, index) => String(index) !== payload
+            );
         },
-        updateTask: (state, {payload}: GenericPayload<ITask>) => {
-            return {...state, tasks: [...state.tasks, payload]};
+        checkTask: (state, {payload}: GenericPayload<string>) => {
+            state.tasks = state.tasks.map((task, id) => {
+                if (String(id) === payload) {
+                    task.completed = !task.completed;
+                }
+                return task;
+            });
         },
     },
 });
 
-export const {createTask, removeTask, updateTask} = Tasks.actions;
+export const {createTask, removeTask, checkTask} = Tasks.actions;
 
 export default Tasks.reducer;
