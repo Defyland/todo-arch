@@ -1,16 +1,16 @@
 'use client';
 
-import {IHome} from '@/screens/Home/Home.types';
 import {useHomeScreen} from '@/screens/Home/Home.model';
 import {Screen} from '@/components/Screen';
 import {List} from '@/components/TodoList';
 
-export const HomeScreen = (props: IHome.IView) => {
+export const HomeScreen = () => {
     const {tasks, deleteTask, selectedTask} = useHomeScreen();
 
     return (
         <Screen>
             <List.TodoListHeader />
+            <List.TodoListSubheader />
             <List.TodoList>
                 {tasks.map((task, index) => (
                     <List.TodoListItem

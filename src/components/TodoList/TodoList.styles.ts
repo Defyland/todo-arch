@@ -20,4 +20,9 @@ export const Styles = {
         'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none',
     TodoListHeaderBtn:
         'flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded',
+    TodoListSubheaderContainer: 'flex min-w-full gap-x-2 justify-center',
+    TodoListSubheaderBtn:
+        'bg-amber-300 hover:bg-amber-400 text-white font-bold py-2 px-4 rounded',
+    TodoListSubheaderBtnSelected:
+        'bg-emerald-300 hover:bg-emerald-400 text-white font-bold py-2 px-4 rounded',
 };

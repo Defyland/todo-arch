@@ -1,10 +1,19 @@
 import {useState, ChangeEvent} from 'react';
-import {useAppDispatch, useAppSelector} from '@/utils';
+import {FilterOption, useAppDispatch, useAppSelector} from '@/utils';
 import {createTask} from '@/redux/reducers/Tasks';
+import {updateFilter} from '@/redux/reducers/Filters';
 
 export const useTodoList = () => {
     const dispatch = useAppDispatch();
     const [input, setInput] = useState('');
+
+    const {options, filter: selectedFilter} = useAppSelector(
+        state => state.Filters
+    );
+
+    const changeFilter = (filter: FilterOption) => {
+        dispatch(updateFilter(filter));
+    };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
@@ -25,5 +34,13 @@ export const useTodoList = () => {
         setInput('');
     };
 
-    return {saveTask, input, setInput, handleInputChange};
+    return {
+        saveTask,
+        input,
+        setInput,
+        handleInputChange,
+        options,
+        changeFilter,
+        selectedFilter,
+    };
 };
