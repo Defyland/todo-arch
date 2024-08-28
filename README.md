@@ -51,6 +51,8 @@ Ao gerar um Componente, a estrutura básica é esta:
     npm run test:full
     ```
 
+![image](https://github.com/user-attachments/assets/c4ea11c1-d1d3-482b-91cc-397930ddc04a)
+
 ## Notas
 
 - **Variáveis de Ambiente**: Certifique-se de adicionar as variáveis de ambiente reais que sua aplicação requer.
