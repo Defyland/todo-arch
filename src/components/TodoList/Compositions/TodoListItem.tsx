@@ -14,7 +14,6 @@ export const TodoListItem = ({
         <div className={Styles.TodoListItemContent}>
             <td className={Styles.TodoListItemCheckContainer}>
                 <input
-                    onChange={() => {}}
                     id="blue-checkbox"
                     type="checkbox"
                     checked={task.completed}

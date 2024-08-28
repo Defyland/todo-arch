@@ -1,5 +1,5 @@
 import {HomeScreen} from '@/screens/Home';
 
-export default function Login() {
+export default function Home() {
     return <HomeScreen />;
 }

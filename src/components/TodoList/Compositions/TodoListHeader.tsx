@@ -19,6 +19,7 @@ export const TodoListHeader = () => {
                     onChange={handleInputChange}
                 />
                 <input
+                    data-testid={`TodoListHeader:btn`}
                     className={Styles.TodoListHeaderBtn}
                     type="submit"
                     value="Salvar"
