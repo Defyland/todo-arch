@@ -5,6 +5,7 @@ export namespace IHome {
     export type IModel = {
         tasks: ITask[];
         deleteTask: (id: string) => void;
+        editTask: (id: number) => void;
         selectedTask: (id: string) => void;
     };
 }

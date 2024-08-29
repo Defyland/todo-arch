@@ -1,12 +1,16 @@
 import {useAppDispatch, useAppSelector, FilterOption, ITask} from '@/utils';
-import {removeTask, checkTask} from '@/redux/reducers/Tasks';
+import {
+    removeTask,
+    checkTask,
+    editTask as rdEditTask,
+} from '@/redux/reducers/Tasks';
 import {IHome} from './Home.types';
 
 export const useHomeScreen = (): IHome.IModel => {
     const dispatch = useAppDispatch();
 
     const {
-        Tasks: {tasks: allTasks},
+        Tasks: {tasks: allTasks, currentTask},
         Filters: {filter},
     } = useAppSelector(state => state);
 
@@ -16,6 +20,10 @@ export const useHomeScreen = (): IHome.IModel => {
 
     const selectedTask = (id: string) => {
         dispatch(checkTask(id));
+    };
+
+    const editTask = (id: number) => {
+        dispatch(rdEditTask(id));
     };
 
     const filterFunctions: {
@@ -29,5 +37,5 @@ export const useHomeScreen = (): IHome.IModel => {
 
     const tasks = filterFunctions[filter](allTasks);
 
-    return {tasks, deleteTask, selectedTask};
+    return {tasks, deleteTask, selectedTask, editTask};
 };

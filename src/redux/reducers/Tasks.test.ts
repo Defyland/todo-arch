@@ -1,4 +1,11 @@
-import Tasks, {createTask, removeTask, checkTask} from './Tasks';
+import Tasks, {
+    createTask,
+    removeTask,
+    checkTask,
+    editTask,
+    saveTask,
+    clearSelection,
+} from './Tasks';
 import {ITasksState, ITask} from '@/utils';
 
 describe('Tasks slice', () => {
@@ -55,6 +62,65 @@ describe('Tasks slice', () => {
         expect(Tasks(previousState, checkTask('0'))).toEqual({
             tasks: [
                 {title: 'Task 1', completed: true},
+                {title: 'Task 2', completed: false},
+            ],
+            currentTask: null,
+        });
+    });
+
+    it('should handle editTask', () => {
+        const previousState: ITasksState = {
+            tasks: [
+                {title: 'Task 1', completed: false},
+                {title: 'Task 2', completed: false},
+            ],
+            currentTask: null,
+        };
+
+        expect(Tasks(previousState, editTask(1))).toEqual({
+            tasks: [
+                {title: 'Task 1', completed: false},
+                {title: 'Task 2', completed: false},
+            ],
+            currentTask: {title: 'Task 2', completed: false},
+        });
+    });
+
+    it('should handle saveTask', () => {
+        const previousState: ITasksState = {
+            tasks: [
+                {title: 'Task 1', completed: false},
+                {title: 'Task 2', completed: false},
+            ],
+            currentTask: {title: 'Task 2', completed: false},
+        };
+
+        const changeTask: ITask = {
+            title: 'New Task 2',
+            completed: false,
+        };
+
+        expect(Tasks(previousState, saveTask(changeTask))).toEqual({
+            tasks: [
+                {title: 'Task 1', completed: false},
+                {title: 'New Task 2', completed: false},
+            ],
+            currentTask: null,
+        });
+    });
+
+    it('should handle clearSelection', () => {
+        const previousState: ITasksState = {
+            tasks: [
+                {title: 'Task 1', completed: false},
+                {title: 'Task 2', completed: false},
+            ],
+            currentTask: {title: 'Task 2', completed: false},
+        };
+
+        expect(Tasks(previousState, clearSelection())).toEqual({
+            tasks: [
+                {title: 'Task 1', completed: false},
                 {title: 'Task 2', completed: false},
             ],
             currentTask: null,

@@ -5,7 +5,7 @@ import {Screen} from '@/components/Screen';
 import {List} from '@/components/TodoList';
 
 export const HomeScreen = () => {
-    const {tasks, deleteTask, selectedTask} = useHomeScreen();
+    const {tasks, deleteTask, selectedTask, editTask} = useHomeScreen();
 
     return (
         <Screen>
@@ -16,6 +16,7 @@ export const HomeScreen = () => {
                     <List.TodoListItem
                         key={`${task.title}-${index}`}
                         task={task}
+                        editTask={() => editTask(index)}
                         selectedTask={() => selectedTask(String(index))}
                         deleteTask={() => deleteTask(String(index))}
                     />

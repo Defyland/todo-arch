@@ -1,5 +1,5 @@
-import {ITasksState, StringPayload, TaskPayload} from '@/utils';
-import {createSlice} from '@reduxjs/toolkit';
+import {ITasksState, NumberPayload, StringPayload, TaskPayload} from '@/utils';
+import {createSlice, current} from '@reduxjs/toolkit';
 
 const initialState: ITasksState = {
     tasks: [],
@@ -26,9 +26,29 @@ const Tasks = createSlice({
                 return task;
             });
         },
+        editTask: (state, {payload}: NumberPayload) => {
+            state.currentTask = state.tasks[payload];
+        },
+        saveTask: (state, {payload}: TaskPayload) => {
+            const indexToChange = state.tasks.findIndex(
+                task => task.title === state.currentTask?.title
+            );
+            state.tasks[indexToChange] = payload;
+            state.currentTask = null;
+        },
+        clearSelection: state => {
+            state.currentTask = null;
+        },
     },
 });
 
-export const {createTask, removeTask, checkTask} = Tasks.actions;
+export const {
+    createTask,
+    removeTask,
+    checkTask,
+    editTask,
+    saveTask,
+    clearSelection,
+} = Tasks.actions;
 
 export default Tasks.reducer;
