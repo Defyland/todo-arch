@@ -1,4 +1,5 @@
 export const Styles = {
-    Container: 'flex h-[68px] bg-slate-200 items-center justify-center mb-8',
-    Title: 'text-black text-2xl font-bold',
+    Container: 'flex h-[64px] rgb(10, 10, 10) text-white items-center justify-center shadow-sm',
+    Title: 'text-white text-xl font-semibold tracking-tight',
+    Logo: 'absolute left-4',
 };

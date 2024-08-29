@@ -5,6 +5,6 @@ describe('Header component', () => {
     it('should render correctly', () => {
         const {getByTestId, getByText} = render(<Header />);
         expect(getByTestId('Header')).toBeTruthy();
-        expect(getByText('Todo List')).toBeTruthy();
+        expect(getByText('TODO LIST')).toBeTruthy();
     });
 });
