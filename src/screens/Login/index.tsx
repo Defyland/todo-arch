@@ -51,7 +51,7 @@ export const LoginScreen = () => {
                     data-testid={`TodoListHeader:btn`}
                     onClick={handleSubmit(onSubmit)}
                     type="submit"
-                    value="Salvar"
+                    value="Login"
                 />
             </div>
         </Screen>
