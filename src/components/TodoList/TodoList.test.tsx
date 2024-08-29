@@ -30,7 +30,7 @@ describe('TodoListHeader component', () => {
         const mockInput = 'Test Task';
 
         (useTodoList as jest.Mock).mockReturnValue({
-            saveTask: mockSaveTask,
+            formSubmit: mockSaveTask,
             handleInputChange: mockHandleInputChange,
             input: mockInput,
         });
@@ -60,8 +60,14 @@ describe('TodoListItem component', () => {
         completed: false,
     };
 
+    const mockTaskTwo: ITask = {
+        title: 'Test Task',
+        completed: true,
+    };
+
     const mockDeleteTask = jest.fn();
     const mockSelectedTask = jest.fn();
+    const mockEditTask = jest.fn();
 
     it('should render correctly', () => {
         const {getByText, getByRole} = render(
@@ -70,6 +76,7 @@ describe('TodoListItem component', () => {
                     <TodoListItem
                         task={mockTask}
                         deleteTask={mockDeleteTask}
+                        editTask={mockEditTask}
                         selectedTask={mockSelectedTask}
                     />
                 </tbody>
@@ -81,20 +88,39 @@ describe('TodoListItem component', () => {
         expect(getByRole('button', {name: /remover/i})).toBeTruthy();
     });
 
-    it('should call selectedTask when the row is clicked', () => {
+    it('should call selectedTask when the Concluir btn is clicked', () => {
         const {getByTestId} = render(
             <table>
                 <tbody>
                     <TodoListItem
                         task={mockTask}
                         deleteTask={mockDeleteTask}
+                        editTask={mockEditTask}
                         selectedTask={mockSelectedTask}
                     />
                 </tbody>
             </table>
         );
 
-        fireEvent.click(getByTestId('TodoListItem'));
+        fireEvent.click(getByTestId('TodoListItem:done'));
+        expect(mockSelectedTask).toHaveBeenCalled();
+    });
+
+    it('should call selectedTask when the Reabrir btn is clicked', () => {
+        const {getByTestId} = render(
+            <table>
+                <tbody>
+                    <TodoListItem
+                        task={mockTaskTwo}
+                        deleteTask={mockDeleteTask}
+                        editTask={mockEditTask}
+                        selectedTask={mockSelectedTask}
+                    />
+                </tbody>
+            </table>
+        );
+
+        fireEvent.click(getByTestId('TodoListItem:undone'));
         expect(mockSelectedTask).toHaveBeenCalled();
     });
 
@@ -105,6 +131,7 @@ describe('TodoListItem component', () => {
                     <TodoListItem
                         task={mockTask}
                         deleteTask={mockDeleteTask}
+                        editTask={mockEditTask}
                         selectedTask={mockSelectedTask}
                     />
                 </tbody>

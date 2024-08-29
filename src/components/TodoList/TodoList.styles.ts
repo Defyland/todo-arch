@@ -14,7 +14,13 @@ export const Styles = {
     TodoListItemAction:
         'whitespace-nowrap text-end text-sm font-medium text-black',
     TodoListItemButton:
-        'inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none',
+        'inline-flex mx-1 items-center text-sm disabled:opacity-50 disabled:pointer-events-none',
+    TodoListItemDanger:
+        'text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800',
+    TodoListItemDefault:
+        'text-orange-600 hover:text-orange-800 focus:outline-none focus:text-orange-800',
+    TodoListItemOk:
+        'text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800',
     TodoListHeaderContainer: 'w-full mb-12',
     TodoListHeaderContent: 'flex items-center border-b border-indigo-500 py-2',
     TodoListHeaderInput:

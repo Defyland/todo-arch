@@ -1,6 +1,10 @@
-import {useState, ChangeEvent} from 'react';
+import {useState, ChangeEvent, useEffect} from 'react';
 import {FilterOption, useAppDispatch, useAppSelector} from '@/utils';
-import {createTask} from '@/redux/reducers/Tasks';
+import {
+    createTask,
+    clearSelection,
+    saveTask as rdSaveTask,
+} from '@/redux/reducers/Tasks';
 import {updateFilter} from '@/redux/reducers/Filters';
 import {ITodoListItem} from './TodoList.types';
 
@@ -12,6 +16,8 @@ export const useTodoList = (): ITodoListItem.IModel => {
         state => state.Filters
     );
 
+    const currentTask = useAppSelector(state => state.Tasks.currentTask);
+
     const changeFilter = (filter: FilterOption) => {
         dispatch(updateFilter(filter));
     };
@@ -20,28 +26,48 @@ export const useTodoList = (): ITodoListItem.IModel => {
         setInput(event.target.value);
     };
 
-    const saveTask = (event: ChangeEvent<HTMLFormElement>) => {
+    useEffect(() => {
+        if (input === '') {
+            dispatch(clearSelection());
+        }
+    }, [input, dispatch]);
+
+    useEffect(() => {
+        if (currentTask) {
+            setInput(currentTask.title);
+        }
+    }, [currentTask]);
+
+    const formSubmit = (event: ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (input === '') return;
 
-        dispatch(
-            createTask({
-                title: input,
-                completed: false,
-            })
-        );
-
+        if (currentTask) {
+            dispatch(
+                rdSaveTask({
+                    title: input,
+                    completed: Boolean(currentTask?.completed),
+                })
+            );
+        } else {
+            dispatch(
+                createTask({
+                    title: input,
+                    completed: false,
+                })
+            );
+        }
         setInput('');
     };
 
     return {
-        saveTask,
         input,
         setInput,
         handleInputChange,
         options,
         changeFilter,
+        formSubmit,
         selectedFilter,
     };
 };

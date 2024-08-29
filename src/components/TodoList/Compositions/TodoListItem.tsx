@@ -5,12 +5,9 @@ export const TodoListItem = ({
     task,
     deleteTask,
     selectedTask,
+    editTask,
 }: ITodoListItem.IView) => (
-    <tr
-        onClick={selectedTask}
-        data-testid={`TodoListItem`}
-        className={Styles.TodoListItemContainer}
-    >
+    <tr data-testid={`TodoListItem`} className={Styles.TodoListItemContainer}>
         <div className={Styles.TodoListItemContent}>
             <td className={Styles.TodoListItemCheckContainer}>
                 <input
@@ -23,9 +20,30 @@ export const TodoListItem = ({
             <td className={Styles.TodoListItemTitle}>{task.title}</td>
             <td className={Styles.TodoListItemAction}>
                 <button
+                    onClick={selectedTask}
+                    type="button"
+                    className={
+                        Styles.TodoListItemButton + Styles.TodoListItemOk
+                    }
+                    data-testid={`TodoListItem:${task.completed ? `undone` : 'done'}`}
+                >
+                    {task.completed ? `Reabrir` : 'Concluir'}
+                </button>
+                <button
+                    onClick={editTask}
+                    type="button"
+                    className={
+                        Styles.TodoListItemButton + Styles.TodoListItemDefault
+                    }
+                >
+                    Editar
+                </button>
+                <button
                     onClick={deleteTask}
                     type="button"
-                    className={Styles.TodoListItemButton}
+                    className={
+                        Styles.TodoListItemButton + Styles.TodoListItemDanger
+                    }
                 >
                     Remover
                 </button>

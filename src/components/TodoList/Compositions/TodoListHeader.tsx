@@ -2,10 +2,10 @@ import {Styles} from '../TodoList.styles';
 import {useTodoList} from '../TodoList.model';
 
 export const TodoListHeader = () => {
-    const {saveTask, handleInputChange, input} = useTodoList();
+    const {handleInputChange, input, formSubmit} = useTodoList();
     return (
         <form
-            onSubmit={saveTask}
+            onSubmit={formSubmit}
             data-testid={`TodoListHeader`}
             className={Styles.TodoListHeaderContainer}
         >

@@ -11,10 +11,11 @@ export namespace ITodoListItem {
         task: ITask;
         selectedTask: () => void;
         deleteTask: () => void;
+        editTask: () => void;
     };
     export type IModelProps = {};
     export type IModel = {
-        saveTask: (event: React.ChangeEvent<HTMLFormElement>) => void;
+        formSubmit: (event: React.ChangeEvent<HTMLFormElement>) => void;
         input: string;
         setInput: React.Dispatch<React.SetStateAction<string>>;
         handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
