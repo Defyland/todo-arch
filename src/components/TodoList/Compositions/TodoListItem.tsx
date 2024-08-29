@@ -7,23 +7,17 @@ export const TodoListItem = ({
     selectedTask,
     editTask,
 }: ITodoListItem.IView) => (
-    <tr data-testid={`TodoListItem`} className={Styles.TodoListItemContainer}>
+    <tr data-testid={`TodoListItem`} className={task.completed ? Styles.TodoListItemContainerCompleted : Styles.TodoListItemContainerPending}>
         <div className={Styles.TodoListItemContent}>
-            <td className={Styles.TodoListItemCheckContainer}>
-                <input
-                    id="blue-checkbox"
-                    type="checkbox"
-                    checked={task.completed}
-                    className={Styles.TodoListItemCheck}
-                />
-            </td>
             <td className={Styles.TodoListItemTitle}>{task.title}</td>
             <td className={Styles.TodoListItemAction}>
                 <button
                     onClick={selectedTask}
                     type="button"
                     className={
-                        Styles.TodoListItemButton + Styles.TodoListItemOk
+                        task.completed 
+                        ? Styles.TodoListItemButton + Styles.TodoListItemReopen
+                        : Styles.TodoListItemButton + Styles.TodoListItemOk
                     }
                     data-testid={`TodoListItem:${task.completed ? `undone` : 'done'}`}
                 >

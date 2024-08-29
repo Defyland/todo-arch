@@ -7,7 +7,7 @@ export const TodoList = ({children}: ITodoList.IView) => (
             <div className={Styles.TodoListInside}>
                 <div className={Styles.TodoListWrapper}>
                     <table className={Styles.TodoListTable}>
-                        <tbody>{children}</tbody>
+                        <tbody className={Styles.TodoListTableTbody}>{children}</tbody>
                     </table>
                 </div>
             </div>

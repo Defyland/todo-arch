@@ -84,7 +84,6 @@ describe('TodoListItem component', () => {
         );
 
         expect(getByText('Test Task')).toBeTruthy();
-        expect(getByRole('checkbox')).toBeTruthy();
         expect(getByRole('button', {name: /remover/i})).toBeTruthy();
     });
 
