@@ -11,17 +11,21 @@ export const HomeScreen = () => {
         <Screen>
             <List.TodoListHeader />
             <List.TodoListSubheader />
-            <List.TodoList>
-                {tasks.map((task, index) => (
-                    <List.TodoListItem
-                        key={`${task.title}-${index}`}
-                        task={task}
-                        editTask={() => editTask(index)}
-                        selectedTask={() => selectedTask(String(index))}
-                        deleteTask={() => deleteTask(String(index))}
-                    />
-                ))}
-            </List.TodoList>
+            {tasks.length > 0 ? (
+                <List.TodoList>
+                    {tasks.map((task, index) => (
+                        <List.TodoListItem
+                            key={`${task.title}-${index}`}
+                            task={task}
+                            editTask={() => editTask(index)}
+                            selectedTask={() => selectedTask(String(index))}
+                            deleteTask={() => deleteTask(String(index))}
+                        />
+                    ))}
+                </List.TodoList>
+            ) : (
+                <List.TodoEmpty />
+            )}
         </Screen>
     );
 };
